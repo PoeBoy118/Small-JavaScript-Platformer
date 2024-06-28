@@ -4,6 +4,7 @@
 // }
 
 import Player from "./player.js";
+import Border from "./border.js";
 
 //Drawing Variables
 let canvas;
@@ -12,6 +13,7 @@ let ctx;
 // Create Game Variables
 let gameLoop;
 let player;
+let borders = [];
 
 // Create Input Variables
 let upKey;
@@ -30,6 +32,21 @@ window.onload = () => {
 
     // Create Player
     player = new Player(100, 400);
+
+    // Create Borders
+    
+        // Ground
+    for (let i = 0; i < 6; i++) {
+        borders.push(new Border(0 + 100 * i, 620, 100, 100, 1))
+    };
+
+        // Border on Ground
+    borders.push(new Border(0, 520, 100, 100, 2))
+
+        // Border on Right of Ground
+    for (let i = 0; i < 3; i++) {
+        borders.push(new Border(600, 420 + 100 * i, 100, 100, 2))
+    }
 
     // Start Game Loop, Runs Step Function Every Number In Miliseconds
     gameLoop = setInterval(globalStep, 1000/30);
@@ -54,6 +71,11 @@ function draw() {
 
     // Draw The Player
     player.draw(ctx);
+
+    // Draw The Borders
+    for (let i = 0; i < borders.length; i++) {
+        borders[i].draw(ctx);
+    };
 };
 
 function setupInputs() {
