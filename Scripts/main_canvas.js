@@ -13,6 +13,12 @@ let ctx;
 let gameLoop;
 let player;
 
+// Create Input Variables
+let upKey;
+let rightKey;
+let downKey;
+let leftKey;
+
 // Run Code on Load
 window.onload = () => {
     canvas = document.getElementById("game-canvas");
@@ -20,7 +26,7 @@ window.onload = () => {
 
     // Set Up Key Listeners
 
-    
+    setupInputs();
 
     // Create Player
     player = new Player(100, 400);
@@ -49,3 +55,48 @@ function draw() {
     // Draw The Player
     player.draw(ctx);
 };
+
+function setupInputs() {
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "w" || event.key === "ArrowUp") {
+            upKey = true;
+            console.log("upKey is:", upKey)
+
+        } else if (event.key === "a" || event.key === "ArrowLeft") {
+            leftKey = true;
+            console.log("leftKey is:", leftKey)
+
+        } else if (event.key === "s" || event.key === "ArrowDown") {
+            downKey = true
+            console.log("downKey is", downKey)
+
+        } else if (event.key === "d" || event.key === "ArrowRight") {
+            rightKey = true
+            console.log("rightKey is", rightKey)
+
+        }
+    });
+
+    document.addEventListener("keyup", function(event) {
+        if (event.key === "w" || event.key === "ArrowUp") {
+            upKey = false
+            console.log("upKey is:", upKey)
+
+        } else if (event.key === "a" || event.key === "ArrowLeft") {
+            leftKey = false
+            console.log("leftKey is:", leftKey)
+
+        } else if (event.key === "s" || event.key === "ArrowDown") {
+            downKey = false
+            console.log("downKey is", downKey)
+
+        } else if (event.key === "d" || event.key === "ArrowRight") {
+            rightKey = false
+            console.log("rightKey is", rightKey)
+        }
+    });
+
+
+}
+
+export {leftKey, rightKey, upKey, downKey}
