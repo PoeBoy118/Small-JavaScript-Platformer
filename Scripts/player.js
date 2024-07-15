@@ -9,6 +9,7 @@ function Player(x, y) {
     this.yspeed = 0;
     this.friction = 0.6;
     this.maxSpeed = 20;
+    this.jumpState = true;
 
     this.width = 50;
     this.height = 100;
@@ -42,12 +43,16 @@ function Player(x, y) {
             if (upKey) {
                 // Check for Ground Placement
 
-                this.yspeed = this.yspeed - 15
-            };
+                this.yspeed = this.yspeed - 15;
+                this.jumpState = false;
+                console.log(this.jumpState)
+            // } else if (!this.jumpState) {
+            //     this.yspeed = 0
+             }
 
 
             // Apply Gravity
-            this.yspeed = this.yspeed + 5;
+            this.yspeed = this.yspeed + 10;
 
 
             // Speed Limiter

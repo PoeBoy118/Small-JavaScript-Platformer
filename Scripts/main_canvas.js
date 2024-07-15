@@ -48,6 +48,22 @@ window.onload = () => {
         borders.push(new Border(600, 420 + 100 * i, 100, 100, 2))
     }
 
+    // Floating Platform
+    borders.push(new Border(900, 220, 300, 100, 1))
+
+    // Left wall
+    borders.push(new Border(-100, 0, 100, 720, 1))
+
+    // Ceiling
+    borders.push(new Border(0, -100, 1280, 100, 1))
+
+    // Right Wall
+    borders.push(new Border(1280, 0, 100, 720, 1))
+
+    // Pit
+    borders.push(new Border(0, 720, 1280, 100, 1))
+
+    
     // Start Game Loop, Runs Step Function Every Number In Miliseconds
     gameLoop = setInterval(globalStep, 1000/30);
 };
